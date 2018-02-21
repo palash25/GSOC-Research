@@ -4,7 +4,7 @@
 [coala](https://github.com/coala/coala)
 
 ## Useful Links
-1. **General**
+### General
 - [Detecting bottlenecks using static code analysis](https://dzone.com/articles/detecting-performance-bottlenecks)
 - [Python profilers documentation](https://docs.python.org/2/library/profile.html)
 - [Profiling Python Like a Boss](https://zapier.com/engineering/profiling-python-boss/)
@@ -20,14 +20,14 @@
 - [Expert Python Programming E-book](https://www.packtpub.com/mapt/book/application_development/9781785886850)
 - [OWASP article on static code analysis](https://www.owasp.org/index.php/Static_Code_Analysis)
 
-2. **Project Specific**
-### Performance Optimization Project
+### Project Specific
+#### Performance Optimization Project
 - [Performance optimization Thread](https://github.com/coala/coala/issues/2912)
 - [BSCO Thread](https://github.com/coala/coala/issues/3788)
 - [coala-perf-test thread](https://github.com/coala/coala/issues/3914)
 - [adtac application](https://github.com/coala/teams/issues/3)
 
-### Debugger and Profiler Integration Project
+#### Debugger and Profiler Integration Project
 - [Profiler Issue](https://github.com/coala/coala/issues/565)
 - [Debugger Issue](https://github.com/coala/coala/issues/1101)
 
