@@ -3,7 +3,10 @@
 ## Oragnization in focus
 [coala](https://github.com/coala/coala)
 
-## Useful Links
+## Potential Bottlenecks
+- The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.
+
+## Useful Resources
 ### General
 - [Detecting bottlenecks using static code analysis](https://dzone.com/articles/detecting-performance-bottlenecks)
 - [Python profilers documentation](https://docs.python.org/2/library/profile.html)
