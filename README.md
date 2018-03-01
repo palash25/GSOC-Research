@@ -60,6 +60,8 @@ This will provide some reference as to how caching works and is implemented
 ##### Other related issues
 - [Improve caching to not explore directories that haven't been modified](https://github.com/coala/coala/issues/2541)
 - [BSCO](https://github.com/coala/coala/issues/3788)
+- [coala-utils: Lazy decorater](https://gitlab.com/coala/coala-utils/issues/3)
+
 ### Points to include in the proposal
 - A benchmarking tool using VMProf API or low level profiling and a custom flag for coala to run analysis and option to check for bears individually and Integrate it with CIs used by coala. See [issue](https://github.com/coala/coala/issues/3914)
 
