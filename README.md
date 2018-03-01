@@ -44,7 +44,7 @@
 #### Performance optimization
 - Loading bears takes times and can be improved using cib. Reference: [this issue](https://github.com/coala/coala/issues/2912#issuecomment-261551204)
 - Bear loading needs to be improved
-- `yield_once` takes a lot of CPU time. It can be found in **coala_utils.decoraters**, **Collectors.py**, **Importers.py** and **Globbing.py**
+- `yield_once` takes a lot of CPU time. It can be found in **coala_utils.decoraters**, **Collectors.py**, **Importers.py** and **Globbing.py**. Performance can be optimized by not using `yield_once` in cases where we expect all distinct results (without any duplication) will be yielded.
 - Significant files and packages of interest **coalib.misc.CachingUtilities**, **coalib/processes/Processing.py**, **coalib/misc/Caching.py**  and **coala_main.py**.
 - Need to read **RELEASE_NOTES.rst** and **coalib/parsing/DefaultArgParser.py**.
 - Need to look at some standard libraries that might be useful: **hashlib**, **pickle**, etc.
