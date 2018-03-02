@@ -9,6 +9,9 @@
 ## Useful Resources/Links
 
 ### Project Specific
+#### cEP
+[cEP-002](https://github.com/coala/cEPs/blob/master/cEP-0002.md)
+
 #### Performance Optimization Project
 - [Performance optimization Thread](https://github.com/coala/coala/issues/2912)
 - [BSCO Thread](https://github.com/coala/coala/issues/3788)
