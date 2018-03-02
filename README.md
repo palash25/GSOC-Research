@@ -22,6 +22,9 @@
 ### Nextgen Core
 - [Makman commits](https://github.com/coala/coala/commits/master?author=Makman2)
 - [Nextgen-Core Milestone](https://github.com/coala/coala/milestone/18)
+- [Nextgen Core Integation](https://github.com/coala/coala/issues/4348)
+- [Cache control](https://github.com/coala/coala/issues/5136)
+- [Nextgen Core: Caching](https://github.com/coala/coala/issues/4350)
 
 ### General/Miscallaneos
 - [Detecting bottlenecks using static code analysis](https://dzone.com/articles/detecting-performance-bottlenecks)
