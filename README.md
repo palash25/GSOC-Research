@@ -1,8 +1,8 @@
 # GSOC-Research
 
 ## Oragnization in focus
-[coala](https://github.com/coala/coala)
-[Project Link](https://projects.coala.io/#/projects?project=optimize_caching&lang=en)
+- [coala](https://github.com/coala/coala)
+- [Project Link](https://projects.coala.io/#/projects?project=optimize_caching&lang=en)
 
 ## Potential Bottlenecks
 - The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.
