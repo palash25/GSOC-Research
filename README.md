@@ -31,8 +31,8 @@
 - [Nextgen Core: Caching](https://github.com/coala/coala/issues/4350)
 
 
-### Notes
-#### Performance optimization
+## Notes
+### Performance optimization
 - Loading bears takes times and can be improved using cib. Reference: [this issue](https://github.com/coala/coala/issues/2912#issuecomment-261551204)
 - Bear loading needs to be improved
 - `yield_once` takes a lot of CPU time. It can be found in **coala_utils.decoraters**, **Collectors.py**, **Importers.py** and **Globbing.py**. Performance can be optimized by not using `yield_once` in cases where we expect all distinct results (without any duplication) will be yielded.
@@ -40,7 +40,7 @@
 - Need to read **RELEASE_NOTES.rst** and **coalib/parsing/DefaultArgParser.py**.
 - Need to look at some standard libraries that might be useful: **hashlib**, **pickle**, etc.
 
-##### Previous performance issues and their fixes
+#### Previous performance issues and their fixes
 This will provide some reference as to how caching works and is implemented
 
 | Issue | Corresponding PR |
@@ -48,12 +48,12 @@ This will provide some reference as to how caching works and is implemented
 | [caching affects other sections](https://github.com/coala/coala/issues/2708) | [Caching: Compute hash only for enabled sections](https://github.com/coala/coala/pull/2712) |
 | [Improve caching to not explore directories that haven't been modified](https://github.com/coala/coala/issues/2541) | [Add file caching and remove Tagging](https://github.com/coala/coala/pull/2016) |
 
-##### Other related issues
+#### Other related issues
 - [Improve caching to not explore directories that haven't been modified](https://github.com/coala/coala/issues/2541)
 - [BSCO](https://github.com/coala/coala/issues/3788)
 - [coala-utils: Lazy decorater](https://gitlab.com/coala/coala-utils/issues/3)
 
-### Points to include in the proposal
+### Additional points to include in the proposal
 - A benchmarking tool using VMProf API or low level profiling and a custom flag for coala to run analysis and option to check for bears individually and Integrate it with CIs used by coala. See [issue](https://github.com/coala/coala/issues/3914)
 
 ### General Resources
