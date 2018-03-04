@@ -58,6 +58,7 @@ This will provide some reference as to how caching works and is implemented
 
 ### General Resources
 - [Async Caching](https://alastaircrabtree.com/cache-the-result-of-an-async-method-using-lazycache/)
+- [Multiprocess Pool vs asyncio.run_in_executor](https://stackoverflow.com/questions/45618893/multiprocess-pool-vs-asyncio-run-in-executor#45640104)
 - [Caching](https://www.wikiwand.com/en/Cache_(computing))
 - [Memoization](https://www.wikiwand.com/en/Memoization)
 - [Detecting bottlenecks using static code analysis](https://dzone.com/articles/detecting-performance-bottlenecks)
