@@ -57,6 +57,7 @@ This will provide some reference as to how caching works and is implemented
 - A benchmarking tool using VMProf API or low level profiling and a custom flag for coala to run analysis and option to check for bears individually and Integrate it with CIs used by coala. See [issue](https://github.com/coala/coala/issues/3914)
 
 ### General Resources
+- [Async Caching](https://alastaircrabtree.com/cache-the-result-of-an-async-method-using-lazycache/)
 - [Caching](https://www.wikiwand.com/en/Cache_(computing))
 - [Memoization](https://www.wikiwand.com/en/Memoization)
 - [Detecting bottlenecks using static code analysis](https://dzone.com/articles/detecting-performance-bottlenecks)
