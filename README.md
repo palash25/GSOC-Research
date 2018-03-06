@@ -40,6 +40,28 @@
 - Need to read **RELEASE_NOTES.rst** and **coalib/parsing/DefaultArgParser.py**.
 - Need to look at some standard libraries that might be useful: **hashlib**, **pickle**, etc.
 
+### Caching
+- There are 3 steps involved in caching:
+  1. Populating the cache 
+  2. Keepig the cache in sync
+  3. Managing the cache size
+
+- Population processes are of 2 kinds:
+  1. Upfront (when we know of all the data that we want to cache before hand)
+  2. Lazy (cache as per the needs with an initial check for possible duplicates)
+  
+**Note:** Lazy population will take less initial cache build time than upfront but it still might cause one-off delays if there
+  are checks in place for pre-existing cached objects (which might not be there at all)
+  
+- Cahce size management: These are the approaches for cache eviction
+    1. Time based eviction: Either keep a separate thread for this (costly approach) or evict data at the time of reading it.
+    2. First in, first out (FIFO)
+    3. First in, last out (FILO).
+    4. Least accessed (not recommende since old values are accessed more)
+    5. Least time between access: When a value is accessed the cache marks the time the value was accessed and increases the access count. When the value is accessed the next time, the cache increments the access count, and calculates the average time between all accesses. Values that were once accessed a lot but fade in popularity will have a dropping average time between accesses. Sooner or later the average may drop low enough that the value will be evicted *(seems costly)*.
+    
+
+
 #### Previous performance issues and their fixes
 This will provide some reference as to how caching works and is implemented
 
