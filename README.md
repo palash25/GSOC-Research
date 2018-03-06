@@ -4,8 +4,9 @@
 - [coala](https://github.com/coala/coala)
 - [Project Link](https://projects.coala.io/#/projects?project=optimize_caching&lang=en)
 
-## Potential Bottlenecks
+## Potential Bottlenecks And Related Issues To Fix
 - The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.
+- Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set).
 
 ## Useful Resources/Links
 
@@ -60,7 +61,8 @@
     4. Least accessed (not recommende since old values are accessed more)
     5. Least time between access: When a value is accessed the cache marks the time the value was accessed and increases the access count. When the value is accessed the next time, the cache increments the access count, and calculates the average time between all accesses. Values that were once accessed a lot but fade in popularity will have a dropping average time between accesses. Sooner or later the average may drop low enough that the value will be evicted *(seems costly)*.
     
-
+### Nextgen Core
+- A Future is an object that doesn't have a result yet and is returned and handled by the executors used inside the core, while the core refers to tasks as (args, kwargs) objects that bears can pass to offload work into the core.
 
 #### Previous performance issues and their fixes
 This will provide some reference as to how caching works and is implemented
