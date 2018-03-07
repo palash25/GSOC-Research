@@ -6,7 +6,7 @@
 
 ## Potential Bottlenecks And Related Issues To Fix
 - The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.
-- Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set).
+- Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set). [issue link](https://github.com/coala/coala/issues/5188)
 
 ## Useful Resources/Links
 
@@ -27,8 +27,19 @@
 ### Nextgen Core
 - [Makman commits](https://github.com/coala/coala/commits/master?author=Makman2)
 - [Nextgen-Core Milestone](https://github.com/coala/coala/milestone/18)
-- [Nextgen Core Integation](https://github.com/coala/coala/issues/4348)
-- [Cache control](https://github.com/coala/coala/issues/5136)
+- [Nextgen Core Integation](https://github.com/coala/coala/issues/4348): Important for closing this issue: Writing extensive tests testing out all main features of the new core relevant for coala-users by invoking coala itself, especially for caching (different bear types, different file scenarios).
+- [Cache control](https://github.com/coala/coala/issues/5136): Providing caching flags
+  - `--cache-strategy / --cache-protocol`: Controls how coala manages caches for the next run.
+    1. none: Don't use a cache at all. A shortcut-flag could be additionally implemented, `--no-cache`, effectively meaning `--cache-protocol=none`
+    2. `primitive`: Use a cache that grows infinitely. All cache entries are stored for all following runs, and aren't removed. Effective when many recurrent changes happen in coafiles and settings. Fastest in storing.
+    3. `lri`/`last-recently-used`(default flag): Cached items persist only until the next run. *Stretch issue: Implement count-parameters that allow to control when to discard items from the cache, e.g. after 3 runs of coala without using a cached item, discard it.*
+    4. `--clear-cache`: Clears the cache.
+    5. `--export-cache / --import-cache`: Maybe useful to share caches. Like CI server for any project run coala, and you can download the cache from there as an artifact to speed up your builds / coala runs.
+    6. `--cache-compression`: Accepts as arguments:
+      - none: No cache compression. This is default.
+      - Other flags that specify common compression capabilities Python provides (for example lzma or gzip). *Cache compression should be evaluated before regarding its effectiveness, because the cache will mainly store hashes which usually aren't really redundant, the gain might be very low. The little performance penalty when loading the cache might be too much when respecting a possible very low gain of cache space reduction.*
+    7. `--optimize-cache` A little performance penalty to make the cache loading faster. Particularly this feature shall utilize pickletools.optimize. But this is not exclusive to this flag.
+    
 - [Nextgen Core: Caching](https://github.com/coala/coala/issues/4350)
 
 
