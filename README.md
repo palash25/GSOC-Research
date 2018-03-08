@@ -5,7 +5,7 @@
 - [Project Link](https://projects.coala.io/#/projects?project=optimize_caching&lang=en)
 
 ## Potential Bottlenecks And Related Issues To Fix
-- The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.
+- ~~The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.~~ Default in python 3.
 - Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set). [issue link](https://github.com/coala/coala/issues/5188)
 
 ## Useful Resources/Links
