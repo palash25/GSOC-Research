@@ -88,6 +88,7 @@ This will provide some reference as to how caching works and is implemented
 - [Improve caching to not explore directories that haven't been modified](https://github.com/coala/coala/issues/2541)
 - [BSCO](https://github.com/coala/coala/issues/3788)
 - [coala-utils: Lazy decorater](https://gitlab.com/coala/coala-utils/issues/3)
+- [Document Nextgen Core](https://github.com/coala/coala/issues/4584)
 
 ### Additional points to include in the proposal
 - A benchmarking tool using VMProf API or low level profiling and a custom flag for coala to run analysis and option to check for bears individually and Integrate it with CIs used by coala. See [issue](https://github.com/coala/coala/issues/3914)
@@ -96,8 +97,6 @@ This will provide some reference as to how caching works and is implemented
 #### Libraries
 - [Stackoverflow](https://stackoverflow.com/questions/34116942/how-to-cache-asyncio-coroutines#34123396)
 - functiools lru cache
--
-
 - [Async Caching](https://alastaircrabtree.com/cache-the-result-of-an-async-method-using-lazycache/)
 - [Quora Eng Blog Case Study](https://engineering.quora.com/Asynchronous-Programming-in-Python)
 - [Multiprocess Pool vs asyncio.run_in_executor](https://stackoverflow.com/questions/45618893/multiprocess-pool-vs-asyncio-run-in-executor#45640104)
