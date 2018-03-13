@@ -9,6 +9,7 @@
 - Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set). [issue link](https://github.com/coala/coala/issues/5188)
 - [Tracking directories](https://thomassileo.name/blog/2013/12/12/tracking-changes-in-directories-with-python/)
 - [glob pattern match issue](https://github.com/coala/coala/issues/2300)
+- [context-object refactoring](https://github.com/coala/coala/issues/4114)
 
 ## Useful Resources/Links
 
