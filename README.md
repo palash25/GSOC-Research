@@ -8,6 +8,7 @@
 - ~~The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.~~ Default in python 3.
 - Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set). [issue link](https://github.com/coala/coala/issues/5188)
 - [Tracking directories](https://thomassileo.name/blog/2013/12/12/tracking-changes-in-directories-with-python/)
+- [glob pattern match issue](https://github.com/coala/coala/issues/2300)
 
 ## Useful Resources/Links
 
