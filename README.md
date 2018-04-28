@@ -73,6 +73,8 @@
 - Now the file bears will be passed these proxy objects instead of the file contents. We will just be storing the file name and
   timestamp
 
+**See the previous file proxy implementation by Udayan:** https://github.com/coala/coala/pull/2784
+
 #### DirectoryProxy
 - These will also reside in the file-dict (i think it should be called proxy-dict)
 - A DirectoryBear can also be implemented to only work on directories by extracting objects from the proxy-dict. The directory
