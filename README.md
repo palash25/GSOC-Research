@@ -4,13 +4,15 @@
 - [coala](https://github.com/coala/coala)
 - [Project Link](https://projects.coala.io/#/projects?project=optimize_caching&lang=en)
 
-## Potential Bottlenecks And Related Issues To Fix
+## Potential Bottlenecks And Issues Of Interest
 - ~~The use of `cPickle` instead of `pickle` in `CachingUtilities.py` for object serialization can potentially boost performance significantly for large projects.~~ Default in python 3.
-- Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set). [issue link](https://github.com/coala/coala/issues/5188)
+- Find a reliable hash for collection-types that don't guarantee an order (e.g. dict, set). [issue link](https://github.com/coala/coala/issues/5188) [WIP] **See also:** https://github.com/coala/coala/issues/4350#issuecomment-363723566
 - [Tracking directories](https://thomassileo.name/blog/2013/12/12/tracking-changes-in-directories-with-python/)
 - [glob pattern match issue](https://github.com/coala/coala/issues/2300)
 - [context-object refactoring](https://github.com/coala/coala/issues/4114)
 - [gitignore tracking](https://github.com/coala/coala/issues/2026)
+- [yield_once for hashable types](https://gitlab.com/coala/coala-utils/issues/43)
+- [lazy property](https://gitlab.com/coala/coala-utils/issues/3)
 
 ## Useful Resources/Links
 
@@ -18,15 +20,11 @@
 #### cEP
 [cEP-002](https://github.com/coala/cEPs/blob/master/cEP-0002.md)
 
-#### Performance Optimization Project
+#### A few useful threads
 - [Performance optimization Thread](https://github.com/coala/coala/issues/2912)
 - [BSCO Thread](https://github.com/coala/coala/issues/3788)
 - [coala-perf-test thread](https://github.com/coala/coala/issues/3914)
 - [adtac application](https://github.com/coala/teams/issues/3)
-
-#### Debugger and Profiler Integration Project
-- [Profiler Issue](https://github.com/coala/coala/issues/565)
-- [Debugger Issue](https://github.com/coala/coala/issues/1101)
 
 ### Nextgen Core
 - [Makman commits](https://github.com/coala/coala/commits/master?author=Makman2)
@@ -54,9 +52,37 @@
 - `yield_once` takes a lot of CPU time. It can be found in **coala_utils.decoraters**, **Collectors.py**, **Importers.py** and **Globbing.py**. Performance can be optimized by not using `yield_once` in cases where we expect all distinct results (without any duplication) will be yielded.
 - Significant files and packages of interest **coalib.misc.CachingUtilities**, **coalib/processes/Processing.py**, **coalib/misc/Caching.py**  and **coala_main.py**.
 - Need to read **RELEASE_NOTES.rst** and **coalib/parsing/DefaultArgParser.py**.
-- Need to look at some standard libraries that might be useful: **hashlib**, **pickle**, etc.
 
 ### Caching
+
+#### FileProxy
+- FileProxy or FileFactory class will construct objects that contain useful information about files.
+- These are persistent objects.
+- These proxy objects will replace the contents of the file-dict used by coala which currently uses filenames mapped to their
+  contents.
+  ```file-dict = {filename: FileProxyObject, ...}```
+- Should provide different interfaces to files like
+  - utf8-decoded
+  - with line endings
+  - without line endings
+  - binary file
+- One of the most important properties of the FileProxy object would be to have a `last-modified-timestamp` to be used for
+  caching.
+- Even though the FileProxy objects will be hashed using `persistent_hash` it might still be beneficial to have a `_hash` method
+  inside the FileProxy class to return the hash of the file content.
+- Now the file bears will be passed these proxy objects instead of the file contents. We will just be storing the file name and
+  timestamp
+
+#### DirectoryProxy
+- These will also reside in the file-dict (i think it should be called proxy-dict)
+- A DirectoryBear can also be implemented to only work on directories by extracting objects from the proxy-dict. The directory
+  paths have a trailing slash unlike file paths which can be used to make the distinction.
+- The 2 proxy objects (file and directory) can also be diffrentiated using a simple type-check inside bears.
+
+### Nextgen Core
+- A Future is an object that doesn't have a result yet and is returned and handled by the executors used inside the core, while the core refers to tasks as (args, kwargs) objects that bears can pass to offload work into the core.
+
+#### Notes on Caching in General
 - There are 3 steps involved in caching:
   1. Populating the cache 
   2. Keepig the cache in sync
@@ -75,9 +101,6 @@
     3. First in, last out (FILO).
     4. Least accessed (not recommende since old values are accessed more)
     5. Least time between access: When a value is accessed the cache marks the time the value was accessed and increases the access count. When the value is accessed the next time, the cache increments the access count, and calculates the average time between all accesses. Values that were once accessed a lot but fade in popularity will have a dropping average time between accesses. Sooner or later the average may drop low enough that the value will be evicted *(seems costly)*.
-    
-### Nextgen Core
-- A Future is an object that doesn't have a result yet and is returned and handled by the executors used inside the core, while the core refers to tasks as (args, kwargs) objects that bears can pass to offload work into the core.
 
 #### Previous performance issues and their fixes
 This will provide some reference as to how caching works and is implemented
@@ -92,9 +115,6 @@ This will provide some reference as to how caching works and is implemented
 - [BSCO](https://github.com/coala/coala/issues/3788)
 - [coala-utils: Lazy decorater](https://gitlab.com/coala/coala-utils/issues/3)
 - [Document Nextgen Core](https://github.com/coala/coala/issues/4584)
-
-### Additional points to include in the proposal
-- A benchmarking tool using VMProf API or low level profiling and a custom flag for coala to run analysis and option to check for bears individually and Integrate it with CIs used by coala. See [issue](https://github.com/coala/coala/issues/3914)
 
 ### General Resources
 #### Libraries
@@ -120,5 +140,3 @@ This will provide some reference as to how caching works and is implemented
 - [Expert Python Programming E-book](https://www.packtpub.com/mapt/book/application_development/9781785886850)
 - [OWASP article on static code analysis](https://www.owasp.org/index.php/Static_Code_Analysis)
 
-### TODO
-- Lookup cahching techniques
