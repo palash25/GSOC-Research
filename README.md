@@ -81,6 +81,15 @@
   paths have a trailing slash unlike file paths which can be used to make the distinction.
 - The 2 proxy objects (file and directory) can also be diffrentiated using a simple type-check inside bears.
 
+```
+Directory can cache file proxies
+so during walking the file tree and constructing Directory objects
+we always try to see whether the timestamp has changed
+if not, we do a cache lookup: dir_cache.get(my_directory), which constructs file-proxies like in the previous run
+but that's still quite a hard one to implement, that needs tight integration with globs and more control over them
+like an iterator, where you can tell the glob to skip directories to walk into or so
+```
+
 ### Nextgen Core
 - A Future is an object that doesn't have a result yet and is returned and handled by the executors used inside the core, while the core refers to tasks as (args, kwargs) objects that bears can pass to offload work into the core.
 
@@ -119,7 +128,6 @@ This will provide some reference as to how caching works and is implemented
 - [Document Nextgen Core](https://github.com/coala/coala/issues/4584)
 
 ### General Resources
-#### Libraries
 - [Stackoverflow](https://stackoverflow.com/questions/34116942/how-to-cache-asyncio-coroutines#34123396)
 - functiools lru cache
 - [Async Caching](https://alastaircrabtree.com/cache-the-result-of-an-async-method-using-lazycache/)
