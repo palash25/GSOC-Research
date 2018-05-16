@@ -113,6 +113,7 @@ like an iterator, where you can tell the glob to skip directories to walk into o
     4. Least accessed (not recommende since old values are accessed more)
     5. Least time between access: When a value is accessed the cache marks the time the value was accessed and increases the access count. When the value is accessed the next time, the cache increments the access count, and calculates the average time between all accesses. Values that were once accessed a lot but fade in popularity will have a dropping average time between accesses. Sooner or later the average may drop low enough that the value will be evicted *(seems costly)*.
 
+
 #### Previous performance issues and their fixes
 This will provide some reference as to how caching works and is implemented
 
@@ -126,6 +127,7 @@ This will provide some reference as to how caching works and is implemented
 - [BSCO](https://github.com/coala/coala/issues/3788)
 - [coala-utils: Lazy decorater](https://gitlab.com/coala/coala-utils/issues/3)
 - [Document Nextgen Core](https://github.com/coala/coala/issues/4584)
+- [Ignore ranges cEP](https://github.com/coala/cEPs/blob/Makman2/cep15/cEP-0015.md)
 
 ### General Resources
 - [Stackoverflow](https://stackoverflow.com/questions/34116942/how-to-cache-asyncio-coroutines#34123396)
